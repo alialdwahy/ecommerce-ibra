@@ -2,7 +2,7 @@ const express = require("express");
 const dbConnect = require("./config/dbConnect");
 const app = express();
 const dotenv = require("dotenv").config();
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8000;
 const bodyParser = require("body-parser");
 const userRouter = require("./routes/userRoute");
 
@@ -24,10 +24,10 @@ app.use("/api/user", userRouter);
 
  
 
-app.listen(process.env.PORT || 8080, function(){
-    console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
-  });
+// app.listen(process.env.PORT || 3000, function(){
+//     console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+//   });
 
-// app.listen(PORT, () => {
-//     console.log(`server is running at Port ${PORT}`);
-// });
+app.listen(PORT, () => {
+    console.log(`server is running at Port ${PORT}`);
+});
