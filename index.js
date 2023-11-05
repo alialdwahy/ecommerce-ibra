@@ -2,7 +2,7 @@ const express = require("express");
 const dbConnect = require("./config/dbConnect");
 const app = express();
 const dotenv = require("dotenv").config();
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8080;
 const bodyParser = require("body-parser");
 const userRouter = require("./routes/userRoute");
 
