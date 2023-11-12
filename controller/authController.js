@@ -48,15 +48,20 @@ const loginUser = asyncHandler( async (req, res ) => {
             maxAge: 72 * 60 * 60 * 1000,
         });
 res.json({
-    _id: findUser?._id,
+    status:true,
+    message:"تم التسجيل بنجاح",
+   data: {_id: findUser?._id,
     mobile: findUser?.mobile,
     firstname: findUser?.firstname,
     lastname: findUser?.lastname,
    email: findUser?.email,
-   token: generateToken(findUser._id),
+   token: generateToken(findUser._id),}
 });
     }else{
-        throw new Error("Invalid Credentials");
+        res.json({
+            status:false,
+            message:"المستخدم غير موجود",
+        });
     }
 });
 
