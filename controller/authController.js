@@ -17,10 +17,16 @@ const createUser = asyncHandler(async (req, res) => {
     const findUser = await User.findOne({email:email});
     if (!findUser) {
         const newUser = await User.create(req.body);
-        res.json(newUser);
+        res.json({
+            status:true,
+            message:"تم التسجيل بنجاح",
+            data: newUser
+        });
     } else {
-        throw new  Error("User Already Exists");
-        
+        res.json({
+            status:false,
+            message:"المستخدم موجود بالفعل",
+        });
     }
 });
 
