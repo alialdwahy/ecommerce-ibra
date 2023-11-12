@@ -16,9 +16,16 @@ const createProduct = asyncHandler(async (req, res) => {
             req.body.slug = slugify(req.body.title);
         }
        const newProduct = await Product.create(req.body);
-       res.json(newProduct);
+       res.json({
+        status:true,
+        message:"Product Add Successfully",
+        data:newProduct
+    });
     }catch (error) {
-        throw new Error(error);
+       res.json({
+        status:false,
+        message: "Product is Not add"
+       })
     }
 });
 
@@ -34,9 +41,16 @@ const updateProduct = asyncHandler(async (req, res) => {
             id , req.body, {
                 new:true
             });
-       res.json(updateProduct);
+       res.json({
+        status:true,
+        message: "Product Update Successfully",
+        data:updateProduct
+    });
     }catch (error) {
-        throw new Error(error);
+       res.json({
+        status: false,
+        message:"Product is Not Update",
+       })
     }
 });
 
@@ -45,9 +59,15 @@ const deleteProduct = asyncHandler(async (req, res) => {
     const {id} = req.params;
     try{
        const deleteProduct = await Product.findByIdAndDelete( id );
-       res.json(deleteProduct);
+       res.json({
+        status:true,
+        message:"Product Delete Successfully",
+        data:deleteProduct});
     }catch (error) {
-        throw new Error(error);
+        res.json({
+            status: false,
+            message: "Product is Not Delete"
+        })
     }
 });
 
@@ -56,9 +76,16 @@ const getaProduct = asyncHandler(async (req,res) => {
     const { id } = req.params;
     try {
         const findProduct = await Product.findById(id);
-        res.json(findProduct);
+        res.json({
+            status:true,
+            message: "Successfully",
+            data:findProduct
+        });
     } catch (error) {
-        throw new Error(error);
+       res.json({
+        status:false,
+        message: "Error displaying the product"
+       })
     }
 });
 
@@ -104,9 +131,16 @@ const getAllProduct = asyncHandler(async (req,res) => {
 
 
         const product = await query;
-        res.json(product);
+        res.json({
+            status:true,
+            message: "Successfully",
+            data:product
+        });
     } catch (error) {
-        throw new Error(error);
+        res.json({
+            status:false,
+            message: "Error displaying the Products"
+           })
     }
 });
 

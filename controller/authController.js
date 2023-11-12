@@ -19,13 +19,13 @@ const createUser = asyncHandler(async (req, res) => {
         const newUser = await User.create(req.body);
         res.json({
             status:true,
-            message:"تم التسجيل بنجاح",
+            message:"Successfully",
             data: newUser
         });
     } else {
         res.json({
             status:false,
-            message:"المستخدم موجود بالفعل",
+            message:"User Already Exists",
         });
     }
 });
@@ -49,7 +49,7 @@ const loginUser = asyncHandler( async (req, res ) => {
         });
 res.json({
     status:true,
-    message:"تم التسجيل بنجاح",
+    message:"Successfully",
    data: {_id: findUser?._id,
     mobile: findUser?.mobile,
     firstname: findUser?.firstname,
@@ -60,7 +60,7 @@ res.json({
     }else{
         res.json({
             status:false,
-            message:"المستخدم غير موجود",
+            message:"User is not Exists",
         });
     }
 });
@@ -85,15 +85,20 @@ const loginAdmin = asyncHandler( async (req, res ) => {
             maxAge: 72 * 60 * 60 * 1000,
         });
 res.json({
-    _id: findAdmin?._id,
+    status:true,
+    message:"Successfully",
+   data:{ _id: findAdmin?._id,
     mobile: findAdmin?.mobile,
     firstname: findAdmin?.firstname,
     lastname: findAdmin?.lastname,
    email: findAdmin?.email,
-   token: generateToken(findAdmin._id),
+   token: generateToken(findAdmin._id),}
 });
     }else{
-        throw new Error("Invalid Credentials");
+        res.json({
+            status:false,
+            message:"User is not Exists",
+        });
     }
 });
 
