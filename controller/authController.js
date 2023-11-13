@@ -9,7 +9,7 @@ const validateMongoDbId = require("../utils/validateMongodbid");
 const { generateRefreshToken } = require("../config/refreshtoken");
 const jwt = require("jsonwebtoken");
 const sendEmail = require("../controller/emailController");
-const crypto = require("crypto-js");
+const CryptoJS = require("crypto-js");
 
 
 
@@ -190,7 +190,7 @@ res.json({
  const resetPassword = asyncHandler( async(req, res) => {
     const { password } = req.body;
     const { token } = req.params;
-    const hashedToken = crypto.createHash("sha256").update(token).digest("hes");
+    const hashedToken = CryptoJS.createHash("sha256").update(token).digest("hes");
     const user = await User.findOne({
         passwordResetToken: hashedToken,
         passwordResetExpires: { $gt: Date.now() },
