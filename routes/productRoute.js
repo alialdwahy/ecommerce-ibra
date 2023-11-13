@@ -18,7 +18,6 @@ router.delete("/deleteProduct/:id", authMiddleware, isAdmin, deleteProduct);
 router.delete("/delete-image/:id", authMiddleware, isAdmin, deleteImages);
 router.get("/getProduct",  getAllProduct);
 
-
-
+ 
 
 module.exports = router;
