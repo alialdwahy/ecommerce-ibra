@@ -9,7 +9,7 @@ const validateMongoDbId = require("../utils/validateMongodbid");
 const { generateRefreshToken } = require("../config/refreshtoken");
 const jwt = require("jsonwebtoken");
 const sendEmail = require("../controller/emailController");
-const crypto = require("crypto-js");
+const crypto = require("crypto-browserify");
 
 
 
