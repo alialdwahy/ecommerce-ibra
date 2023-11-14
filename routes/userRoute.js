@@ -1,6 +1,6 @@
 const express = require("express");
 
-const {createUser,loginUser,handlerRefreshToken,logout,updatePassword,loginAdmin,forgotPasswordToken,resetPassword} = require("../controller/authController");
+const {createUser,loginUser,handlerRefreshToken,logout,updatePassword,loginAdmin,forgotPasswordToken} = require("../controller/authController");
 const { authMiddleware, isAdmin} = require("../middlewares/authmiddleware");
 
 const router = express.Router();
@@ -14,7 +14,7 @@ router.put("/update-password",  authMiddleware,updatePassword);
 router.get("/refreshToken", handlerRefreshToken );
 router.get("/logout", logout );
 router.post("/forgot-password", forgotPasswordToken);
-router.put("/reset-password/:token", resetPassword);
+// router.put("/reset-password/:token", resetPassword);
 
 
 
