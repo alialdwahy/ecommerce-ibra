@@ -171,7 +171,7 @@ res.json({
         const token = await user.createPasswordResetToken();
         await user.save();
         const resetURL = `Hi, Please follow this link to reset Your Password. This link is valid till 10 minutes from now. 
-        <a href = 'http://localhost:5000/api/user/reset-password/${token}'> Click Here</>`;
+        <a href = 'https://ibra-ecommerce-a05c47fe52ff.herokuapp.com/api/user/reset-password/${token}'> Click Here</>`;
         const data = {
             to: email,
             text: "Hey User",
