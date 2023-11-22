@@ -28,7 +28,7 @@ const updateProductCategory = asyncHandler( async (req, res) => {
         });
         res.json({
             status:true,
-            message:"Update Successfully",
+            message:"Updated Successfully",
            data:{
             updatedProductCategory}
         });
@@ -47,7 +47,7 @@ const deleteProductCategory = asyncHandler( async (req, res) => {
         const deletedProductCategory = await Category.findByIdAndDelete(id);
         res.json({ 
              status:true,
-            message:"Update Successfully",
+            message:"Deleted Successfully",
             date:{deletedProductCategory}
         });
     } catch (error) {
