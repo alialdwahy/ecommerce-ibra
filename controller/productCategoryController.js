@@ -5,9 +5,17 @@ const validateMongoDbId = require("../utils/validateMongodbid");
 const createProductCategory = asyncHandler( async (req, res) => {
     try {
         const newProductCategory = await Category.create(req.body);
-        res.json(newProductCategory);
+        res.json({
+            status:true,
+            message:"Successfully",
+           data:{
+            newProductCategory}
+        });
     } catch (error) {
-        throw new Error(error);
+        res.json({
+            status:false,
+            message:"Category Not Added",
+        });
     }
 });
 
@@ -18,9 +26,17 @@ const updateProductCategory = asyncHandler( async (req, res) => {
         const updatedProductCategory = await Category.findByIdAndUpdate(id, req.body, {
             new: true,
         });
-        res.json(updatedProductCategory);
+        res.json({
+            status:true,
+            message:"Update Successfully",
+           data:{
+            updatedProductCategory}
+        });
     } catch (error) {
-        throw new Error(error);
+        res.json({
+            status:false,
+            message:"Category Not Updated",
+        });
     }
 });
 
@@ -29,9 +45,16 @@ const deleteProductCategory = asyncHandler( async (req, res) => {
     validateMongoDbId(id);
     try {
         const deletedProductCategory = await Category.findByIdAndDelete(id);
-        res.json(deletedProductCategory);
+        res.json({ 
+             status:true,
+            message:"Update Successfully",
+            date:{deletedProductCategory}
+        });
     } catch (error) {
-        throw new Error(error);
+        res.json({
+            status:false,
+            message:"Category Not Deleted",
+        });
     }
 });
 
@@ -41,9 +64,16 @@ const getProductCategory = asyncHandler( async (req, res) => {
     validateMongoDbId(id);
     try {
         const getaProductCategory = await Category.findById(id);
-        res.json(getaProductCategory);
+        res.json( {
+             status:true,
+            message:"Successfully",
+           data:{getaProductCategory}
+        });
     } catch (error) {
-        throw new Error(error);
+        res.json({
+            status:false,
+            message:"Category Not Geted",
+        });
     }
 });
 
@@ -51,9 +81,16 @@ const getProductCategory = asyncHandler( async (req, res) => {
 const getAllProductCategory = asyncHandler( async (req, res) => {
     try {
         const getallProductCategory = await Category.find();
-        res.json(getallProductCategory);
+        res.json({
+            status:true,
+           message:"Successfully",
+          data:{getallProductCategory}
+        });
     } catch (error) {
-        throw new Error(error);
+        res.json({
+            status:false,
+            message:"Categorys Not Geted",
+        });
     }
 });
 
