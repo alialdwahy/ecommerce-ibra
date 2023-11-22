@@ -188,11 +188,11 @@ res.json({
 
 
  const resetPassword = asyncHandler( async(req, res) => {
-    const { password } = req.body;
-    const { token } = req.params;
+    const  {password}  = req.body;
+    const  {token}  = req.params;
     const hashedToken = require('crypto').createHash("sha256").update(token).digest("hes");
     const user = await User.findOne({
-        passwordResetToken: hashedToken,
+        passwordResetToken: token,
         passwordResetExpires: { $gt: Date.now() },
        
     });
