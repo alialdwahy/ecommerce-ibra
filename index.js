@@ -9,6 +9,7 @@ const productRouter = require("./routes/productRoute");
 const productCategoryRouter = require("./routes/productCategoryRoute");
 const brandRouter = require("./routes/brandRoute");
 const couponRouter = require("./routes/couponRoute");
+const colorRouter = require("./routes/colorRoute");
 
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
@@ -27,6 +28,7 @@ app.use("/api/product", productRouter);
 app.use("/api/product-category", productCategoryRouter);
 app.use("/api/brand", brandRouter);
 app.use("/api/coupon", couponRouter);
+app.use("/api/color", colorRouter);
 
 
  
